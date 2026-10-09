@@ -1,11 +1,3 @@
-<?php
-
-$id =$_GET['id'];
-
-$pessoa = new Pessoa($id);
-
-?>
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -25,12 +17,16 @@ $pessoa = new Pessoa($id);
 
     <section class="d-flex justify-content-center">
         <section class="m-3 w-50 d-flex justify-content-center">
-            <form action="pessoa_edit_controller.php" method="post">
-                <input type="hidden" name="id" value="<?= $pessoa->getId() ?>">
+            <form action="/CRUD_YT/controllers/pessoa_add_controller.php" method="post" enctype="multipart/form-data">
 
                 <div class=" mb-3">
                     <label for="nome" class="form-label">Nome</label>
-                    <input type="text" class="form-control" id="nome" name="nome" value="<?= $pessoa->getNome(); ?>">
+                    <input type="text" class="form-control" id="nome" name="nome">
+                </div>
+
+                <div class=" mb-3">
+                    <label for="foto" class="form-label">Foto</label>
+                    <input type="file" class="form-control" id="foto" name="foto">
                 </div>
 
                 <div class="mb-3">
@@ -42,4 +38,4 @@ $pessoa = new Pessoa($id);
 
 </body>
 
-</html> ..
+</html>

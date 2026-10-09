@@ -4,7 +4,8 @@ USE crud_yt;
 
 CREATE TABLE pessoa (
     id_pessoa INT PRIMARY KEY AUTO_INCREMENT,
-    nome VARCHAR(255) NOT NULL
+    nome VARCHAR(255) NOT NULL,
+    foto LONGBLOB
 );
 
 -- SEEDS

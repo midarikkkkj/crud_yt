@@ -1,6 +1,5 @@
 <?php
-require_once 'conexao.php';
-require_once 'pessoa.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/CRUD_YT/models/pessoa.php';
 
 $lista = Pessoa::listar();
 ?>
@@ -21,23 +20,25 @@ $lista = Pessoa::listar();
     <section class="m-3">
         <table class="table table-dark table-hover">
             <tr>
+                <th>FOTO</th>
                 <th>NOME</th>
                 <th colspan="2">
-                    <a href="pessoa_add_view.php" class="btn btn-success"><span class="material-symbols-outlined">add</span>Adicionar</a>
+                    <a href="/CRUD_YT/views/pessoa_add_view.php" class="btn btn-success"><span class="material-symbols-outlined">add</span>Adicionar</a>
                 </th>
             </tr>
             <?php foreach ($lista as $pessoa): ?>
                 <tr>
+                    <td><img src="data:image;base64,<?= base64_encode($pessoa['foto']) ?>" alt=""></td>
                     <td><?= $pessoa['nome'] ?></td>
                     <td>
-                        <a href="pessoa_edit_view.php?id=<?= $pessoa['id_pessoa'] ?>" class="btn btn-warning">
+                        <a href="/CRUD_YT/views/pessoa_edit_view.php?id=<?= $pessoa['id_pessoa'] ?>" class="btn btn-warning">
                             <span class="material-symbols-outlined">
                                 edit
                             </span>Editar
                         </a>
                     </td>
                     <td>
-                        <form action="pessoa_del_controller.php" method="post" onsubmit="return confirm('Voce tem certeza que quer deletar isso?')">
+                        <form action="/CRUD_YT/controllers/pessoa_del_controller.php" method="post" onsubmit="return confirm('Voce tem certeza que quer deletar isso?')">
                             <input type="hidden" name="id" value="<?= $pessoa['id_pessoa'] ?>">
                             <button type="submit" class="btn btn-danger">Deletar</button>
                         </form>
